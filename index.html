@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Leave Management System</h1>
+        </div>
+
+        <div class="org-selector">
+            <select id="orgType" onchange="updateOrganizationType()">
+                <option value="corporate">Corporate</option>
+                <option value="education">Educational Institution</option>
+                <option value="healthcare">Healthcare</option>
+            </select>
+        </div>
+
+        <div class="role-selector">
+            <button onclick="setUserRole('employee')">Switch to Employee</button>
+            <button onclick="setUserRole('manager')">Switch to Manager</button>
+        </div>
+
+        <div class="dashboard">
+            <div class="leave-form">
+                <h2>Apply for Leave</h2>
+                <div class="leave-balance" id="leaveBalance"></div>
+                <form id="leaveForm">
+                    <div class="form-group">
+                        <label for="leaveType">Leave Type</label>
+                        <select id="leaveType" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" id="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" id="endDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Reason</label>
+                        <textarea id="reason" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="manager">Manager</label>
+                        <input type="text" id="manager" placeholder="Enter manager's name" required>
+                    </div>
+                    <button type="submit">Submit Leave Request</button>
+                </form>
+            </div>
+
+            <div class="leave-status">
+                <h2>Leave Requests</h2>
+                <div class="leave-requests">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Duration</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaveRequestsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="calendar" class="calendar"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
